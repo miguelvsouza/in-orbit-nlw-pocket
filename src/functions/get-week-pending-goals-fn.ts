@@ -1,10 +1,7 @@
 import dayjs from "dayjs"
-import weekOfYear from "dayjs/plugin/weekOfYear"
 import { db } from "../db"
 import { goals, goalsCompletions } from "../db/schema"
 import { between, count, eq, lte, sql } from "drizzle-orm"
-
-dayjs.extend(weekOfYear)
 
 export async function getWeekPendingGoalsFn() {
   const firstDayOfWeek = dayjs().startOf("week").toDate()
