@@ -1,9 +1,9 @@
 import dayjs from "dayjs"
 import { client, db } from "./index"
-import { goals, goalsCompletitions } from "./schema"
+import { goals, goalsCompletions } from "./schema"
 
 async function seed() {
-  await db.delete(goalsCompletitions)
+  await db.delete(goalsCompletions)
   await db.delete(goals)
 
   const result = await db
@@ -17,7 +17,7 @@ async function seed() {
 
   const startOfWeek = dayjs().startOf("week")
 
-  await db.insert(goalsCompletitions).values([
+  await db.insert(goalsCompletions).values([
     { goalId: result[0].id, createdAt: startOfWeek.toDate() },
     { goalId: result[1].id, createdAt: startOfWeek.add(1, "day").toDate() },
   ])
