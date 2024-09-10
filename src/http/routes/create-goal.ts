@@ -3,7 +3,7 @@ import { ZodTypeProvider } from "fastify-type-provider-zod"
 import { z } from "zod"
 import { createGoalFn } from "../../functions/create-goal-fn"
 
-export function createGoal(app: FastifyInstance) {
+export async function createGoal(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().post(
     "/goals",
     {
